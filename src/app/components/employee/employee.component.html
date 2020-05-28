@@ -1,0 +1,20 @@
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Profile Id</th>
+                <th>First</th>
+                <th>Last</th>
+                <th>Account No</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <td>{{ employee.profile_id }}</td>
+                <td>{{ employee.first }}</td>
+                <td>{{ employee.last }}</td>
+                <td>{{ employee.account_no }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
