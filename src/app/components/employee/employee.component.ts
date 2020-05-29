@@ -20,14 +20,8 @@ export class EmployeeComponent implements OnInit {
     this.employeeService.getEmployees().subscribe(
       data => {
         console.log('Employees: ', data);
-        data.forEach( item => {
-            this.employees.push({
-              accountNo: item.accountNo,
-              profileId: item.profileId,
-              first: item.first,
-              last: item.last
-            });
-          });
+        // Insert data into employees array
+        data.forEach( item => { this.employees.push(item); });
       });
   }
 }
