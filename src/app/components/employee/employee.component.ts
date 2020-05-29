@@ -1,3 +1,4 @@
+import { EmployeeService } from './../../services/employee.service';
 import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/model/employee';
 
@@ -7,25 +8,26 @@ import { Employee } from 'src/app/model/employee';
   styleUrls: ['./employee.component.scss']
 })
 export class EmployeeComponent implements OnInit {
+  employees: Employee[] = [];
 
-  employees: Employee[] = [
-    {
-      profile_id: 1000000,
-      first: "Juan",
-      last: "Terrazas",
-      account_no: 888888888
-    },
-    {
-      profile_id: 1000001,
-      first: "Mark",
-      last: "Timmins",
-      account_no: 999999999
-    }
-  ];
-
-  constructor() { }
+  constructor(private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
+    this.getEmployees();
   }
 
+  getEmployees() {
+    this.employeeService.getEmployees().subscribe(
+      data => {
+        console.log('Employees: ', data);
+        data.forEach( item => {
+            this.employees.push({
+              accountNo: item.accountNo,
+              profileId: item.profileId,
+              first: item.first,
+              last: item.last
+            });
+          });
+      });
+  }
 }

@@ -1,6 +1,6 @@
 export class Employee {
-    profile_id: number;
+    profileId: number;
     first: string;
     last: string;
-    account_no: number;
+    accountNo: number;
 }
